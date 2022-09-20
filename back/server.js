@@ -12,7 +12,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.json());
 mongoose
     .connect("mongodb://localhost:27017/artisan", {
         useNewUrlParser: true,
@@ -23,8 +23,6 @@ mongoose
 async function init() {
     app.use("/", route);
 }
-
-// app.use('/meubles', routes.meubles)
 
 app.listen(APP_PORT, () => {
     console.log(`App listening at http://${APP_HOSTNAME}:${APP_PORT}`);

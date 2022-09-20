@@ -8,6 +8,27 @@ export async function getAll(req, res) {
         res.status(500).json({ status: "error", message: err.message });
     }
 }
+
+export async function getByName(req, res) {
+    const { name } = req.params;
+    try {
+        const docs = await MeubleModel.find({ name: name });
+        res.status(200).json({ status: "success", data: docs });
+    } catch (err) {
+        res.status(500).json({ status: "error", message: err.message });
+    }
+}
+
+export async function getByCategory(req, res) {
+    const { category } = req.params;
+    try {
+        const docs = await MeubleModel.find({ category: category });
+        res.status(200).json({ status: "success", data: docs });
+    } catch (err) {
+        res.status(500).json({ status: "error", message: err.message });
+    }
+}
+
 export async function save(req, res) {
     try {
         const docs = new MeubleModel({
@@ -41,5 +62,32 @@ export async function save(req, res) {
         res.status(200).send("Saved !");
     } catch (err) {
         res.status(500).send(err.message);
+    }
+}
+
+export async function create(req, res) {
+    try {
+        const doc = new MeubleModel({
+            name: req.body.name,
+            quantity: req.body.quantity,
+            materials: req.body.materials,
+            category: req.body.category,
+        });
+        await doc.save();
+        res.send(doc);
+    } catch (err) {
+        res.status(500).json({
+            status: "error",
+            message: err.message,
+        });
+    }
+}
+
+export async function destroy(req, res) {
+    try {
+        await MeubleModel.deleteOne({ _id: req.params.id });
+        res.status(204).send();
+    } catch (err) {
+        res.status(500).json({ status: "error", message: err.message });
     }
 }
