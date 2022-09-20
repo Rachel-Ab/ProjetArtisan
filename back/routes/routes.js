@@ -7,6 +7,7 @@ import {
     getAllEntreprise,
     saveEntreprise,
 } from "../controllers/entrepriseController.js";
+import { login, saveUser } from "../controllers/loginController.js";
 import {
     editMaterial,
     getAllMaterial,
@@ -34,17 +35,23 @@ router.get("/material/save", saveMaterial);
 router.get("/category/save", saveCategory);
 router.get("/meuble/save", save);
 */
+router.get("/user/save", saveUser);
+router.get("/api/meuble/all", getAll);
+router.get("/api/meuble/:name", getByName);
+router.get("/api/meuble/category/:category", getByCategory);
+router.post("/api/meuble/post", create);
+router.delete("/api/meuble/delete/:id", destroy);
+router.get("/api/type/all", getAllType);
+router.get("/api/material/all", getAllMaterial);
+router.get("/api/material/:name", getMaterialByName);
+router.patch("/api/material/edit/:id", editMaterial);
+router.get("/api/category/all", getAllCategory);
+router.get("/api/entreprise/all", getAllEntreprise);
 
-router.get("/meuble/all", getAll);
-router.get("/meuble/:name", getByName);
-router.get("/meuble/category/:category", getByCategory);
-router.post("/meuble/post", create);
-router.delete("/meuble/delete/:id", destroy);
-router.get("/type/all", getAllType);
-router.get("/material/all", getAllMaterial);
-router.get("/material/:name", getMaterialByName);
-router.patch("/material/edit/:id", editMaterial);
-router.get("/category/all", getAllCategory);
-router.get("/entreprise/all", getAllEntreprise);
+router.post("/api/user", login);
+
+// router.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname + "/front/Pages/Error.js"));
+// });
 
 export default router;

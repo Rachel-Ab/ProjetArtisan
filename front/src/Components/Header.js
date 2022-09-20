@@ -1,8 +1,15 @@
 import React from "react";
 
 function Header() {
+    const Logout = () => {
+        localStorage.setItem("user_connect", JSON.stringify(false));
+        window.location.href = "/";
+    };
     return (
-        <header id="header" className="header fixed-top d-flex align-items-center">
+        <header
+            id="header"
+            className="header fixed-top d-flex align-items-center"
+        >
             <div className="d-flex align-items-center justify-content-between">
                 <a href="" className="logo d-flex align-items-center">
                     <img src="assets/img/logo.png" alt="" />
@@ -54,9 +61,10 @@ function Header() {
                                 <a
                                     className="dropdown-item d-flex align-items-center"
                                     href="#"
+                                    onClick={Logout}
                                 >
                                     <i className="bi bi-box-arrow-right"></i>
-                                    <span>Sign Out</span>
+                                    <span>Log Out</span>
                                 </a>
                             </li>
                         </ul>
