@@ -2,14 +2,15 @@ import React from "react";
 import Layout from "../Components/Layout";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import RouteWithSubRoutes from "../Components/RouteWithSubRoutes";
-import {MeublesChart} from "../Components/MeublesChart";
 
 function Dashboard({ routes }) {
     return (
         <Layout>
             <div className="dashboard-body">
-                <h1>Dashboard</h1>
-                {/* <MeublesChart /> */}
+                <div className="dashboard-header">
+                    <h1>Dashboard</h1>
+                    <h2>Hello Admin</h2>
+                </div>
             </div>
             <Switch>
                 {routes.map((route, i) => {

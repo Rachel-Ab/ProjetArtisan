@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import Login from "./Pages/Login";
 import Error from "./Pages/Error";
-import Test from "./Pages/Test";
+import Meuble from "./Pages/Meubles";
 import Protected from "./Components/Protected";
 
 function App() {
@@ -16,8 +16,8 @@ function App() {
 
     const routes = [
         {
-            path: "/dashboard/test",
-            component: Test,
+            path: "/dashboard/Meuble",
+            component: Meuble,
         },
         {
             path: "/dashboard/*",
