@@ -12,7 +12,7 @@ function Header() {
         >
             <div className="d-flex align-items-center justify-content-between">
                 <a href="" className="logo d-flex align-items-center">
-                    <img src="assets/img/logo.png" alt="" />
+                    <img src="http://localhost:3000/assets/img/logo.png" alt="" />
                     <span className="d-none d-lg-block">NiceAdmin</span>
                 </a>
                 <i className="bi bi-list toggle-sidebar-btn"></i>
@@ -27,7 +27,7 @@ function Header() {
                             data-bs-toggle="dropdown"
                         >
                             <img
-                                src="assets/img/profile-img.jpg"
+                                src="http://localhost:3000/assets/img/profile-img.jpg"
                                 alt="Profile"
                                 className="rounded-circle"
                             />

@@ -19,13 +19,11 @@ app.use(
         secret: "register",
         resave: true,
         saveUninitialized: true,
-        // user: 0,
     })
 );
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "front/Pages")));
 
 mongoose
     .connect("mongodb://localhost:27017/artisan", {

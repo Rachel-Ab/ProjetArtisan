@@ -1,12 +1,10 @@
 import React from "react";
 import "./App.css";
 import Dashboard from "./Pages/Dashboard";
-import ReactDOM from "react-dom";
 import {
     BrowserRouter as Router,
     Route,
     Switch,
-    Redirect,
 } from "react-router-dom";
 import Login from "./Pages/Login";
 import Error from "./Pages/Error";
@@ -15,9 +13,21 @@ import Protected from "./Components/Protected";
 
 function App() {
     const token = JSON.parse(localStorage.getItem("user_connect"));
+
+    const routes = [
+        {
+            path: "/dashboard/test",
+            component: Test,
+        },
+        {
+            path: "/dashboard/*",
+            component: Error,
+        },
+    ];
+
     return (
         <>
-            <Router>
+            {/* <Router>
                 <Switch>
                     <Route exact path="/">
                         <Login />
@@ -32,17 +42,33 @@ function App() {
                             <Test />
                         </Protected>
                     </Route>
-                    <Route to="/404" component={Error} />
-                    {/* {token ? (
-                        <>
-                            <Route path="/dashboard" component={Dashboard} />
-                            <Route path="/dashboard/test" component={Test} />
-                        </>
-                    ) : (
-                        <>
-                            <Redirect to={{ pathname: "/" }} />
-                        </>
-                    )} */}
+                    <Route path="*">
+                        <Error />
+                    </Route>
+                </Switch>
+            </Router> */}
+
+            {/* {token ? (
+                <>
+                    <Route path="/dashboard" component={Dashboard} />
+                    <Route path="/dashboard/test" component={Test} />
+                </>
+            ) : (
+                <>
+                    <Redirect to={{ pathname: "/" }} />
+                </>
+            )} */}
+
+            <Router>
+                <Switch>
+                    <Route exact path="/">
+                        <Login />
+                    </Route>
+                    <Route path="/dashboard">
+                        <Protected isLoggedIn={token}>
+                            <Dashboard routes={routes} />
+                        </Protected>
+                    </Route>
                 </Switch>
             </Router>
         </>
