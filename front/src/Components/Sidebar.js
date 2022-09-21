@@ -5,7 +5,7 @@ function Sidebar() {
         <aside id="sidebar" className="sidebar">
             <ul className="sidebar-nav" id="sidebar-nav">
                 <li className="nav-item">
-                    <a className="nav-link collapsed" href="">
+                    <a className="nav-link collapsed" href="/dashboard">
                         <i className="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
@@ -28,9 +28,9 @@ function Sidebar() {
                         data-bs-parent="#sidebar-nav"
                     >
                         <li>
-                            <a href="">
+                            <a href="/dashboard/meubles">
                                 <i className="bi bi-circle"></i>
-                                <span>Chart.js</span>
+                                <span>Meubles</span>
                             </a>
                         </li>
                     </ul>

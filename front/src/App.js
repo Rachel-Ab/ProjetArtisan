@@ -8,16 +8,21 @@ import {
 } from "react-router-dom";
 import Login from "./Pages/Login";
 import Error from "./Pages/Error";
-import Meuble from "./Pages/Meubles";
+import Meubles from "./Pages/Meubles.tsx";
 import Protected from "./Components/Protected";
+import MeubleDetail from "./Pages/MeubleDetail";
 
 function App() {
     const token = JSON.parse(localStorage.getItem("user_connect"));
 
     const routes = [
         {
-            path: "/dashboard/Meuble",
-            component: Meuble,
+            path: "/dashboard/meubles",
+            component: Meubles,
+        },
+        {
+            path: "/dashboard/meuble/:name",
+            component: MeubleDetail,
         },
         {
             path: "/dashboard/*",
