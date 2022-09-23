@@ -17,6 +17,7 @@ import {
 import {
     create,
     destroy,
+    editMeuble,
     getAll,
     getByCategory,
     getByName,
@@ -40,6 +41,7 @@ router.get("/api/meuble/all", getAll);
 router.get("/api/meuble/:name", getByName);
 router.get("/api/meuble/category/:category", getByCategory);
 router.post("/api/meuble/post", create);
+router.patch("/api/meuble/edit/:id", editMeuble);
 router.delete("/api/meuble/delete/:id", destroy);
 router.get("/api/type/all", getAllType);
 router.get("/api/material/all", getAllMaterial);

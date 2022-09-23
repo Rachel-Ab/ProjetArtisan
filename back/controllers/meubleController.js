@@ -83,6 +83,19 @@ export async function create(req, res) {
     }
 }
 
+export async function editMeuble(req, res) {
+    try {
+        const docs = await MeubleModel.findOne({ _id: req.params.id });
+        if (req.body.quantity) {
+            docs.quantity = req.body.quantity;
+        }
+        await docs.save();
+        res.send(docs);
+    } catch (err) {
+        res.status(500).json({ status: "error", message: err.message });
+    }
+}
+
 export async function destroy(req, res) {
     try {
         await MeubleModel.deleteOne({ _id: req.params.id });
