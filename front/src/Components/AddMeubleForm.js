@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 export default function AddMeubleForm({ show }) {
+    const token = JSON.parse(localStorage.getItem("admin"));
     const [materials, setMaterials] = useState([]);
     const [test, setTest] = useState([]);
     const [frêne, setfrêne] = useState({
@@ -40,6 +41,7 @@ export default function AddMeubleForm({ show }) {
         category: "",
     });
     const [post, setPost] = useState("none");
+    let materialArray = [];
     useEffect(() => {
         fetch("http://localhost:8000/api/material/all")
             .then((res) => res.json())
@@ -48,7 +50,10 @@ export default function AddMeubleForm({ show }) {
     function postMeuble() {
         const requestOptions = {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + token,
+            },
             body: JSON.stringify(form),
         };
         fetch("http://localhost:8000/api/meuble/post", requestOptions)
@@ -58,7 +63,8 @@ export default function AddMeubleForm({ show }) {
     function addMaterial(materialArray) {
         setForm({ ...form, materials: materialArray });
     }
-    let materialArray = [];
+    
+
     const handleSubmit = (event) => {
         event.preventDefault();
         postMeuble();

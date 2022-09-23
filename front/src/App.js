@@ -8,7 +8,6 @@ import Meubles from "./Pages/Meubles.tsx";
 import Protected from "./Components/Protected";
 import MeubleDetail from "./Pages/MeubleDetail";
 import Entreprises from "./Pages/Entreprises";
-import Materials from "./Pages/ManageMeuble";
 import MaterialDetail from "./Pages/MaterialDetail";
 import ManageMeuble from "./Pages/ManageMeuble";
 import ManageMaterials from "./Pages/ManageMaterials";
@@ -16,7 +15,7 @@ import ManageMaterials from "./Pages/ManageMaterials";
 
 
 function App() {
-    const token = JSON.parse(localStorage.getItem("user_connect"));
+    const token = JSON.parse(localStorage.getItem("admin"));
 
     const routes = [
         {

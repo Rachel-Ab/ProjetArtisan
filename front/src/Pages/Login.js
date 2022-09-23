@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [items, setItems] = useState([]);
+    const [token, setToken] = useState(false);
     const [submit, setSubmit] = useState(false);
 
     const formInfo = {
@@ -11,9 +11,8 @@ export default function Login() {
         password: password,
     };
     useEffect(() => {
-        localStorage.setItem("user_connect", JSON.stringify(submit));
-        console.log({ submit: submit });
-        if (JSON.parse(localStorage.getItem("user_connect"))) {
+        localStorage.setItem("admin", JSON.stringify(token));
+        if (JSON.parse(localStorage.getItem("admin"))) {
             window.location.href = "/dashboard";
         }
     }, [submit]);
@@ -26,7 +25,10 @@ export default function Login() {
             body: JSON.stringify(formInfo),
         })
             .then((res) => res.json())
-            .then((data) => setSubmit(data.data));
+            .then((data) => {
+                setSubmit(data.data);
+                setToken(data.token);
+            });
     };
 
     return (

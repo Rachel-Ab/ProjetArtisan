@@ -2,10 +2,12 @@ import { UserModel } from "../Models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import CryptoJS from "crypto-js";
+import dotenv from "dotenv";
 
+dotenv.config();
+const { SECRET_KEY } = process.env;
 export async function login(req, res) {
     try {
-        req.session.user = 0;
         const { email, password } = req.body;
         const hashPassword = CryptoJS.SHA1(password).toString();
         const admin = await UserModel.findOne({
@@ -14,22 +16,25 @@ export async function login(req, res) {
         });
 
         if (admin) {
-            req.session.user = 1;
-            // console.log("logged");
-            res.status(200).json({ status: "success", data: true });
+            const token = jwt.sign(
+                {
+                    user: admin,
+                },
+                SECRET_KEY,
+                {
+                    expiresIn: 24 * 60 * 60,
+                }
+            );
+
+            res.header("Authorization", "Bearer " + token);
+            res.status(200).json({
+                status: "success",
+                data: true,
+                token: token,
+            });
         } else {
-            req.session.user = 0;
             res.status(401).json({ status: "success", data: false });
         }
-        // if (admin.password == hashPassword) {
-        //     console.log("logged");
-        //     req.session.user = 1;
-        //     // res.json({ log: 1, pass: admin.password, other: hashPassword });
-        // } else {
-        //     // res.json({ log: admin.password, other: hashPassword });
-        //     console.log("wrong email or password");
-        //     req.session.user = 0;
-        // }
     } catch (err) {
         res.status(500).json({ status: "error", message: err.message });
     }
@@ -56,6 +61,13 @@ export async function saveUser(req, res) {
             password: "artisan24",
         });
         newUser.password = CryptoJS.SHA1(newUser.password).toString();
+        tokenDb = jwt.sign(
+            {
+                user: newUser,
+            },
+            SECRET_KEY,
+            { expiresIn: 24 * 60 * 60 }
+        );
         newUser.save().then((user) => {
             res.status(200).send("Saved !");
         });

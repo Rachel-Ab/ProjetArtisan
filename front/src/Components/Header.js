@@ -2,7 +2,7 @@ import React from "react";
 
 function Header() {
     const Logout = () => {
-        localStorage.setItem("user_connect", JSON.stringify(false));
+        localStorage.clear()
         window.location.href = "/";
     };
     return (

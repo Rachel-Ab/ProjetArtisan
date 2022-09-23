@@ -12,15 +12,8 @@ const { APP_HOSTNAME, APP_PORT, NODE_ENV } = process.env;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
-app.set('trust proxy', 1) // trust first proxy
-app.use(
-    session({
-        name: "register",
-        secret: "register",
-        resave: true,
-        saveUninitialized: true,
-    })
-);
+app.set('trust proxy', 1)
+
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
