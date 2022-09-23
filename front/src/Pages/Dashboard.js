@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../Components/Layout";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import RouteWithSubRoutes from "../Components/RouteWithSubRoutes";
 
 function Dashboard({ routes }) {

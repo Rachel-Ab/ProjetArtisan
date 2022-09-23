@@ -1,38 +1,97 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
+.chart-block {
+    margin: 30px 50px;
+}
+
+.meuble-key {
+    display: flex;
+    flex-direction: row;
+}
+
+.meuble-key button {
+    margin: 5px 10px;
+}
+
+.card-header-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.button-edition-block {
+    position: absolute;
+    right: 25px;
+    bottom: 15px;
+}
+
+.button-edition-block button {
+    margin-left: 5px;
+}
+
+.alert {
+    position: fixed;
+    z-index: 2;
+    top: 60px;
+    right: 0;
+}
+
+.btn-success.add-meuble {
+    margin-left: 50px;
+}
+
+.box-material-form {
+    width: 200px;
+}
+
+h6 button {
+    margin: 0;
+}
+
+.material-block-cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.material-card {
+    width: 250px;
+    margin: 20px;
+}
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

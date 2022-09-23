@@ -98,24 +98,26 @@ export default function Meubles() {
 
         return data.labels[index];
     };
-    
+
     const onClick = (event: MouseEvent<HTMLCanvasElement>) => {
         const { current: chart } = chartRef;
         if (!chart) {
             return;
         }
-        let meuble = printElementAtEvent(getElementAtEvent(chart, event))
+        let meuble = printElementAtEvent(getElementAtEvent(chart, event));
         console.log(meuble);
-        window.location.href = "/dashboard/meuble/"+meuble
+        window.location.href = "/dashboard/meuble-detail/" + meuble;
     };
     return (
         <div className="dashboard-body">
-            <Bar
-                options={options}
-                data={data}
-                ref={chartRef}
-                onClick={onClick}
-            />
+            <div className="chart-block">
+                <Bar
+                    options={options}
+                    data={data}
+                    ref={chartRef}
+                    onClick={onClick}
+                />
+            </div>
         </div>
     );
 }
