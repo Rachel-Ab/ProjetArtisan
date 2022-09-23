@@ -87,6 +87,23 @@ h6 button {
     width: 250px;
     margin: 20px;
 }
+
+.material-card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.material-card .card-text {
+    max-height: 170px;
+    overflow-y: auto;
+}
+
+.button-manage-material {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 @keyframes App-logo-spin {
     from {
         transform: rotate(0deg);

@@ -5,6 +5,7 @@ export default function ManageMeuble() {
     const [meubles, setMeubles] = useState([]);
     const [status, setStatus] = useState("none");
     const [create, setCreate] = useState("none");
+    const [quantityShow, setQuantityShow] = useState("none");
     let num = 0;
     useEffect(() => {
         fetch("http://localhost:8000/api/meuble/all")
@@ -29,7 +30,9 @@ export default function ManageMeuble() {
         fetch(
             "http://localhost:8000/api/meuble/edit/" + meuble._id,
             requestOptions
-        ).then((response) => response.json());
+        )
+            .then((response) => response.json())
+            .then(() => setQuantityShow(""));
     }
     function minusMeuble(meuble) {
         num = meuble.quantity - 1;
@@ -41,7 +44,9 @@ export default function ManageMeuble() {
         fetch(
             "http://localhost:8000/api/meuble/edit/" + meuble._id,
             requestOptions
-        ).then((response) => response.json());
+        )
+            .then((response) => response.json())
+            .then(() => setQuantityShow(""));
     }
 
     return (
@@ -53,6 +58,20 @@ export default function ManageMeuble() {
             >
                 <i className="bi bi-check-circle me-1"></i> Meuble delete,
                 please refresh the page to see the changes
+                <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div
+                className="alert alert-success alert-dismissible fade show"
+                role="alert"
+                style={{ display: quantityShow }}
+            >
+                <i className="bi bi-check-circle me-1"></i> Meuble quantity
+                updated, please refresh the page to see the changes
                 <button
                     type="button"
                     className="btn-close"
